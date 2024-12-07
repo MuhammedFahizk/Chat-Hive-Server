@@ -6,7 +6,7 @@ import { User } from '../model/User.js';
 
 export const userAuthentication = async (req, res, next) => {
   const { accessToken, refreshToken } = req.cookies;
-
+    console.log(req.cookies);
   try {
     // Check if refreshToken is missing
     if (!refreshToken) {
