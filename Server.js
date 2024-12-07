@@ -20,7 +20,7 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: process.env.FRONTEND_URL, // Use the environment variable
+    origin: true
     methods: ['GET', 'POST'],
     credentials: true,
   },
@@ -33,7 +33,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL, // Use the environment variable
+    origin: true
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   })
