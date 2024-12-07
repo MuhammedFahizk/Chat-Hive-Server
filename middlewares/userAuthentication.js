@@ -66,8 +66,8 @@ export const userAuthentication = async (req, res, next) => {
     res.cookie('accessToken', newAccessToken, {
       maxAge: 4 * 60 * 1000, 
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', 
-      sameSite: 'Strict',
+          secure: true,
+          sameSite: 'none',
     });
 
     req.user = jwt.decode(newAccessToken); // Attach new token info to request
