@@ -79,15 +79,15 @@ const userSignUp = async (req, res) => {
     res.cookie('accessToken', accessToken, {
       maxAge: 4 * 60 * 1000,
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // Set secure flag only in production
-      sameSite: 'Strict',
+          secure: true,
+          sameSite: 'none',
     });
 
     res.cookie('refreshToken', refreshToken, {
       maxAge: 7 * 24 * 60 * 60 * 1000,
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'Strict',
+          secure: true,
+          sameSite: 'none',
     });
     const { userName, _id, profilePicture, email, bio, following, followers } = data;
     return res.status(200).json({
@@ -143,16 +143,16 @@ const userLogin = async (req, res) => {
     const { accessToken, refreshToken } = await generateUserToken(data);
     res.cookie('accessToken', accessToken, {
       maxAge: 4 * 60 * 1000,
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // Set secure flag only in production
-      sameSite: 'Strict',
+       httpOnly: true,
+          secure: true,
+          sameSite: 'none',
     });
 
     res.cookie('refreshToken', refreshToken, {
       maxAge: 7 * 24 * 60 * 60 * 1000,
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'Strict',
+          secure: true,
+          sameSite: 'none',
     });
 
     const { userName, _id, profilePicture, email, bio, following, followers } = data;
@@ -194,14 +194,14 @@ const loginWithGoogle = async (req, res) => {
         res.cookie('accessToken', accessToken, {
           maxAge: 4 * 60 * 1000,
           httpOnly: true,
-          secure: process.env.NODE_ENV === 'production',
-          sameSite: 'Strict',
+          secure: true,
+          sameSite: 'none',
         });
         res.cookie('refreshToken', refreshToken, {
           maxAge: 7 * 24 * 60 * 60 * 1000,
           httpOnly: true,
-          secure: process.env.NODE_ENV === 'production',
-          sameSite: 'Strict',
+          secure: true,
+          sameSite: 'none',
         });
 
         const { userName, _id, profilePicture, email, bio, following, followers } = response;
