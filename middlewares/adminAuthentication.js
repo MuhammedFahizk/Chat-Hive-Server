@@ -13,9 +13,9 @@ export const adminAuthentication = async (req, res, next) => {
     const {newAccessToken} = await generateAccessToken(refreshToken);
     res.cookie('accessToken', newAccessToken, {
       maxAge: 4 * 60,
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // Set secure flag only in production
-      sameSite: 'Strict',
+       httpOnly: true,
+          secure: true,
+          sameSite: 'none',
     });
   console.log('accessToken', newAccessToken);
 
