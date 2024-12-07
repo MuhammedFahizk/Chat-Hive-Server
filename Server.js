@@ -53,7 +53,7 @@ io.on('connection', (socket) => {
     users.set(userId, socket.id);
     console.error('User connected:', userId);
     deliverUndeliveredNotifications(userId, io);
-    manageOnline(userId, true );
+    manageOnline(userId, true);
 
     // deliverUndeliveredChatting(userId, io);
   });
@@ -63,7 +63,7 @@ io.on('connection', (socket) => {
     for (const [userId, id] of users.entries()) {
       if (id === socket.id) {
         console.error('User disconnected:', userId);
-        manageOnline(userId, false );
+        manageOnline(userId, false);
         // Remove the user from the map
         users.delete(userId);
         break; // Exit the loop once the user is found and removed
