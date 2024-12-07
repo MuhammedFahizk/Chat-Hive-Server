@@ -20,19 +20,20 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: 'http://localhost:5174',
+    origin: process.env.FRONTEND_URL, // Use the environment variable
     methods: ['GET', 'POST'],
     credentials: true,
   },
   pingTimeout: 100000, // Set global ping timeout (in milliseconds)
 });
 
+
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: 'http://localhost:5174',
+    origin: process.env.FRONTEND_URL, // Use the environment variable
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   })
